@@ -3,9 +3,481 @@
   <head>
     <meta charset="UTF-8" />
     <title>Nur Madiha | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #ff8a6b;   /* warm coral */
+        --secondary: #ffd56b; /* soft yellow */
+        --bg: #fff7f0;        /* light warm background */
+        --text: #263238;      /* dark grey */
+        --muted: #6c757d;
+        --card-bg: #ffffff;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(255, 247, 240, 0.95);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid #ffe0c7;
+      }
+      .nav {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        color: var(--primary);
+        letter-spacing: 0.05em;
+      }
+      nav a {
+        margin-left: 1rem;
+        text-decoration: none;
+        color: var(--text);
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+      nav a:hover {
+        color: var(--primary);
+      }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2.5rem 1.5rem 4rem;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 2fr 1.3fr;
+        gap: 2rem;
+        align-items: center;
+        padding-top: 2rem;
+      }
+      .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        background: #ffe8d6;
+        color: var(--primary);
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+      }
+      .hero h1 {
+        font-family: "Poppins", sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .hero h2 {
+        font-size: 1.1rem;
+        color: var(--muted);
+        margin-bottom: 1rem;
+      }
+      .hero p {
+        margin-bottom: 1.5rem;
+      }
+      .buttons {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+      .btn-primary,
+      .btn-outline {
+        padding: 0.6rem 1.2rem;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, #ff8a6b, #ff6f91);
+        color: #fff;
+        box-shadow: 0 10px 25px rgba(255, 111, 145, 0.4);
+      }
+      .btn-outline {
+        border: 1.5px solid var(--primary);
+        color: var(--primary);
+        background: transparent;
+      }
+      .hero-card {
+        background: radial-gradient(circle at top left, #ffe8d6, #ffffff);
+        border-radius: 24px;
+        padding: 1.75rem;
+        box-shadow: 0 18px 40px rgba(255, 138, 107, 0.25);
+        text-align: center;
+      }
+      .hero-avatar {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        margin: 0 auto 1rem;
+        background: linear-gradient(135deg, #ff8a6b, #ffd56b);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+      }
+      .hero-card h3 {
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 0.25rem;
+      }
+      .hero-card p {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin-top: 0.75rem;
+        justify-content: center;
+      }
+      .pill {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.7rem;
+        border-radius: 999px;
+        background: #fff;
+        border: 1px solid #ffe0c7;
+        color: var(--primary);
+      }
+      section {
+        margin-top: 3rem;
+      }
+      section h2 {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.6rem;
+        margin-bottom: 0.75rem;
+      }
+      section > p.section-intro {
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+      }
+      .grid {
+        display: grid;
+        gap: 1.5rem;
+      }
+      .grid-2 {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+      .card {
+        background: var(--card-bg);
+        border-radius: 18px;
+        padding: 1.25rem 1.4rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+        border: 1px solid #ffe0c7;
+      }
+      .card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 0.25rem;
+      }
+      .card span.tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        padding: 0.15rem 0.55rem;
+        border-radius: 999px;
+        background: #ffe8d6;
+        color: var(--primary);
+        margin-bottom: 0.4rem;
+      }
+      .card p {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .skills-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+      }
+      .skills-chip {
+        font-size: 0.8rem;
+        padding: 0.35rem 0.8rem;
+        border-radius: 999px;
+        background: #ffffff;
+        border: 1px solid #ffd6b5;
+      }
+      .contact-box {
+        background: linear-gradient(135deg, #ff8a6b, #ffd56b);
+        border-radius: 24px;
+        padding: 1.75rem;
+        color: #fff;
+        display: grid;
+        grid-template-columns: 2fr 1.2fr;
+        gap: 1.2rem;
+        align-items: center;
+        margin-top: 1rem;
+      }
+      .contact-box h3 {
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 0.5rem;
+      }
+      .contact-box p {
+        font-size: 0.95rem;
+      }
+      .contact-details p {
+        margin-bottom: 0.2rem;
+        font-size: 0.9rem;
+      }
+      footer {
+        text-align: center;
+        font-size: 0.8rem;
+        color: var(--muted);
+        padding-top: 2rem;
+        border-top: 1px solid #ffe0c7;
+      }
+      @media (max-width: 768px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+        .contact-box {
+          grid-template-columns: 1fr;
+        }
+        nav {
+          display: none;
+        }
+      }
+    </style>
   </head>
   <body>
-    <h1>Hi, I’m Nur Madiha</h1>
-    <p>Aspiring Software & AI Developer.</p>
+    <header>
+      <div class="nav">
+        <div class="logo">NM.</div>
+        <nav>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div>
+          <span class="badge">Bright • Warm • Motivated</span>
+          <h1>Hi, I’m Nur Madiha</h1>
+          <h2>Aspiring Software &amp; AI Developer · Computer Science Student</h2>
+          <p>
+            I enjoy building intelligent, user-centred applications—from Android
+            mobile apps to AI-powered chatbots—that make learning easier and
+            solve real problems.
+          </p>
+          <div class="buttons">
+            <a href="#projects" class="btn-primary">View my projects</a>
+            <a href="#contact" class="btn-outline">Let’s connect</a>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <div class="hero-avatar">N</div>
+          <h3>Extroverted, warm &amp; curious</h3>
+          <p>
+            I love collaborating, speaking, and turning complex ideas into
+            simple, friendly experiences.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Leadership</span>
+            <span class="pill">Public Speaking</span>
+            <span class="pill">Teamwork</span>
+            <span class="pill">Adaptable</span>
+          </div>
+        </aside>
+      </section>
+
+      <section id="about">
+        <h2>About me</h2>
+        <p class="section-intro">
+          I’m a Computer Science student at UiTM Shah Alam with a background in
+          Electrical Engineering. I’m passionate about mobile development,
+          AI-powered solutions, and clean, friendly user experiences.
+        </p>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Education</h3>
+            <p>
+              Bachelor of Computer Science (Hons.), UiTM Shah Alam (2023–2027,
+              expected). Previously completed a Diploma in Electrical
+              Engineering (Electronic) at UiTM Dungun (2020–2023).
+            </p>
+          </div>
+          <div class="card">
+            <h3>What motivates me</h3>
+            <p>
+              I’m excited by projects that mix software, AI, and real-world
+              impact—especially tools that help students learn better and make
+              information more reliable and accessible.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        <p class="section-intro">
+          A selection of academic and personal projects that explore AI,
+          Android development, and embedded systems.
+        </p>
+        <div class="grid grid-2">
+          <div class="card">
+            <span class="tag">Android · NLP</span>
+            <h3>Fake Hadith Detection App</h3>
+            <p>
+              Android mobile app that uses semantic similarity and NLP
+              techniques to help users check the authenticity of hadith texts.
+            </p>
+          </div>
+          <div class="card">
+            <span class="tag">AI · Gemini API</span>
+            <h3>Study Tips Chatbot</h3>
+            <p>
+              An AI-powered chatbot that gives personalised study tips and
+              academic guidance using the Google Gemini API for natural
+              language understanding.
+            </p>
+          </div>
+          <div class="card">
+            <span class="tag">IoT</span>
+            <h3>Water Level Monitoring System</h3>
+            <p>
+              Real-time water level monitoring using IoT sensors and a
+              microcontroller to collect and process sensor data.
+            </p>
+          </div>
+          <div class="card">
+            <span class="tag">Embedded · Logic</span>
+            <h3>Vending Machine & LED Systems</h3>
+            <p>
+              Implemented vending machine transaction logic and LED brightness
+              control circuits using potentiometers and voltage regulators.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2>Experience & leadership</h2>
+        <p class="section-intro">
+          Hands-on industry experience, teaching, and student leadership roles
+          that strengthened my communication and teamwork.
+        </p>
+        <div class="grid grid-2">
+          <div class="card">
+            <span class="tag">Industry</span>
+            <h3>Intern, Amsteel Mills Sdn. Bhd.</h3>
+            <p>
+              Worked on a weight measurement project using load sensors,
+              focusing on sensor integration and data acquisition.
+            </p>
+          </div>
+          <div class="card">
+            <span class="tag">Education</span>
+            <h3>Temporary Tuition Teacher</h3>
+            <p>
+              Taught English, Mathematics, and Science to Year 5–6 students,
+              improving my instructional skills and patience.
+            </p>
+          </div>
+          <div class="card">
+            <span class="tag">Leadership</span>
+            <h3>Debate Captain & RESC Exco</h3>
+            <p>
+              Led the UiTM Shah Alam debate team to the national semi-finals and
+              served as R&amp;D Exco and emcee for student events.
+            </p>
+          </div>
+          <div class="card">
+            <span class="tag">Personal qualities</span>
+            <p>
+              Committed, punctual, attentive, and always curious—qualities that
+              guide my work and how I collaborate with others.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <p class="section-intro">
+          Technical foundations in software and hardware, supported by strong
+          soft skills from teaching and leadership.
+        </p>
+        <div class="card">
+          <h3>Technical</h3>
+          <div class="skills-row">
+            <span class="skills-chip">Java</span>
+            <span class="skills-chip">XML</span>
+            <span class="skills-chip">HTML &amp; CSS</span>
+            <span class="skills-chip">Python</span>
+            <span class="skills-chip">Android Studio</span>
+            <span class="skills-chip">VS Code</span>
+            <span class="skills-chip">UI/UX fundamentals</span>
+          </div>
+        </div>
+        <div class="card" style="margin-top: 1rem;">
+          <h3>Soft skills</h3>
+          <div class="skills-row">
+            <span class="skills-chip">Leadership</span>
+            <span class="skills-chip">Communication</span>
+            <span class="skills-chip">Teamwork</span>
+            <span class="skills-chip">Decision-making</span>
+            <span class="skills-chip">Adaptability</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Let’s connect</h2>
+        <div class="contact-box">
+          <div>
+            <h3>Open to internships & projects</h3>
+            <p>
+              If you’re looking for a bright, warm, and motivated developer to
+              join your team or collaborate on a project, feel free to reach
+              out.
+            </p>
+          </div>
+          <div class="contact-details">
+            <p><strong>Email:</strong> your-email@example.com</p>
+            <p><strong>Location:</strong> Klang &amp; Shah Alam, Selangor</p>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="year"></span> Stay cool and attractive
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
